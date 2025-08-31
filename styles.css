@@ -62,6 +62,20 @@ a:hover {
   color: #6b7280;   /* muted gray */
 }
 
+/* Poster Carousel Custom Style */
+#posterCarousel img {
+  height: 450px;       /* Adjust height */
+  object-fit: cover;   /* Keeps images neat */
+  border-radius: 20px;
+}
+
+.carousel-caption {
+  background: rgba(0,0,0,0.55);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+
 /* ===========================
    CARDS & SECTIONS
    =========================== */
