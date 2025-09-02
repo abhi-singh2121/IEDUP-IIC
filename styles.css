@@ -98,6 +98,100 @@ a:hover {
   font-size: 12px;
 }
 
+/* ===== Support & Facilities Section ===== */
+
+#support {
+  background: url("assets/ai.jpg") no-repeat center center/cover;
+  position: relative;
+  z-index: 1;
+}
+
+#support::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.9); /* light overlay for readability */
+  z-index: -1;
+}
+
+/* Section Title */
+#support .section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+#support .section-title::after {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 4px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, #3f51b5, #2196f3);
+  border-radius: 5px;
+}
+
+#support p {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+/* Cards */
+#support .card {
+  border: none;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+#support .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Icons */
+#support i {
+  background: linear-gradient(135deg, #3f51b5, #2196f3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  transition: transform 0.3s ease;
+}
+
+#support .card:hover i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Card Title */
+#support h3 {
+  font-weight: 600;
+  color: #222;
+  margin-top: 10px;
+}
+
+/* Card Text */
+#support p.text-muted {
+  font-size: 0.95rem;
+  color: #555 !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  #support .section-title {
+    font-size: 2rem;
+  }
+  #support i {
+    font-size: 2.5rem;
+  }
+}
+
 /* ===========================
    EXPERTS GRID (Images & Cards)
    =========================== */
@@ -106,6 +200,67 @@ a:hover {
   object-fit: cover;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+}
+
+/* ===== CTA Section (Shorter Version) ===== */
+#cta {
+  position: relative;
+  height: 50vh; /* reduced height */
+  background: url("assets/cta-bg.jpg") no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+#cta::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.55); /* overlay */
+  z-index: 1;
+}
+
+#cta .cta-content {
+  position: relative;
+  z-index: 2;
+  padding: 15px;
+}
+
+#cta h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+#cta h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+#cta .btn-cta {
+  padding: 10px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #3f51b5, #2196f3);
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+#cta .btn-cta:hover {
+  background: linear-gradient(135deg, #283593, #1565c0);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #cta { height: 40vh; } /* even shorter on mobile */
+  #cta h1 { font-size: 1.8rem; }
+  #cta h2 { font-size: 1.1rem; }
 }
 
 /* ===========================
