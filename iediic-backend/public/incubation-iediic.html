@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incubation at IEDIIC</title>
+
+    <!-- Bootstrap + Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Page Styles -->
+    <style>
+      :root {
+        --brand-1: #1a237e;
+        --brand-2: #2196f3;
+        --ink: #101223;
+      }
+
+      /* ---------- Navbar (same as other pages) ---------- */
+      .navbar-brand img {
+        height: 40px;
+      }
+      .navbar {
+        box-shadow: 0 1px 12px rgba(16, 18, 35, 0.06);
+      }
+      .navbar .nav-link.active {
+  font-weight: 600;
+  color: #0d6efd !important; /* Highlight active link (blue) */
+}
+      /* ---------- Hero (1/4 page height) ---------- */
+      .hero-slim {
+        min-height: 25vh; /* ≈ 1/4th page */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        background: radial-gradient(
+            1200px 400px at 20% -10%,
+            rgba(33, 150, 243, 0.35),
+            transparent 60%
+          ),
+          radial-gradient(
+            1200px 400px at 120% 110%,
+            rgba(26, 35, 126, 0.45),
+            transparent 60%
+          ),
+          url("cta-bg.jpg") center/cover no-repeat,
+          linear-gradient(135deg, #0f1631, #1a237e);
+        position: relative;
+      }
+      .hero-slim::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.35),
+          rgba(0, 0, 0, 0.45)
+        );
+      }
+      .hero-wrap {
+        position: relative;
+        z-index: 2;
+        padding: 32px 16px;
+      }
+      .hero-title {
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        margin: 0 0 0.35rem;
+        font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      }
+      .hero-sub {
+        font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+        opacity: 0.95;
+        max-width: 860px;
+        margin: 0 auto 0.75rem;
+      }
+      .hero-kicker {
+        display: inline-block;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-size: 0.8rem;
+        color: #fff;
+        background: linear-gradient(
+          90deg,
+          rgba(63, 81, 181, 0.4),
+          rgba(33, 150, 243, 0.4)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        padding: 0.4rem 0.7rem;
+        border-radius: 999px;
+        margin-bottom: 0.8rem;
+        backdrop-filter: saturate(140%) blur(4px);
+      }
+      .btn-ghost {
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        color: #fff;
+        padding: 0.6rem 1.15rem;
+        border-radius: 999px;
+        font-weight: 600;
+        transition: 0.25s;
+        text-decoration: none;
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .btn-ghost:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      /* ---------- Section helpers ---------- */
+      section {
+        padding: 50px 0;
+      }
+      .section-title {
+        font-weight: 800;
+        color: var(--ink);
+        margin-bottom: 0.25rem;
+        font-size: clamp(1.3rem, 2.8vw, 2rem);
+      }
+      .section-sub {
+        color: #5b6070;
+        max-width: 900px;
+      }
+
+      /* ---------- “Your Challenges” (4 vertical cards) ---------- */
+      .card-vertical {
+        border: 0;
+        border-radius: 16px;
+        height: 100%;
+        background: #fff;
+        box-shadow: 0 8px 24px rgba(16, 18, 35, 0.06);
+        transition: 0.25s ease;
+        padding: 22px;
+      }
+      .card-vertical:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 28px rgba(16, 18, 35, 0.12);
+      }
+      .icon-pill {
+        width: 56px;
+        height: 56px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #3f51b5, #2196f3);
+        color: #fff;
+        font-size: 1.4rem;
+        box-shadow: 0 6px 18px rgba(33, 150, 243, 0.35);
+      }
+
+      /* ---------- What We Offer (feature grid) ---------- */
+      .feature {
+        border-radius: 14px;
+        background: linear-gradient(180deg, #ffffff, #f8faff);
+        border: 1px solid #edf0f7;
+        padding: 20px;
+        height: 100%;
+      }
+      .feature h5 {
+        margin: 10px 0 6px;
+        font-weight: 700;
+        color: #1f2340;
+      }
+
+      /* ---------- Companies (logo strip) ---------- */
+      .logo-strip {
+        display: flex;
+        gap: 20px;
+        will-change: transform;
+        overflow: hidden; /* hides extra scrollbars */
+      }
+      .logo-strip::-webkit-scrollbar {
+        display: none;
+      }
+      .logo-item {
+        flex: 0 0 auto;
+        min-width: 160px; /* Ensures logos have consistent space */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .logo-item:hover {
+        transform: translateY(-3px);
+      }
+      .logo-item img {
+        max-height: 42px;
+        object-fit: contain;
+      }
+      /* ---------- Meet the Makers ---------- */
+      .cta-panel {
+        background: linear-gradient(
+          135deg,
+          rgba(63, 81, 181, 0.08),
+          rgba(33, 150, 243, 0.1)
+        );
+        border: 1px solid #e6ebf6;
+        border-radius: 20px;
+        padding: 28px;
+      }
+      .btn-gradient {
+        background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        padding: 0.75rem 1.15rem;
+        font-weight: 700;
+        box-shadow: 0 8px 20px rgba(33, 150, 243, 0.25);
+      }
+      .btn-gradient:hover {
+        transform: translateY(-2px);
+      }
+
+      /* ---------- Footer ---------- */
+      footer {
+        background: #0f1324;
+        color: #c8cbe0;
+      }
+
+      /* ===== Responsive Fixes ===== */
+
+      /* Remove unwanted horizontal scroll */
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      /* Ensure all images scale correctly */
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Navbar toggle icon visible on white background */
+      .navbar-toggler {
+        border: none;
+      }
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0,0,0,0.85)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+      }
+
+      /* Make hero text scale nicely */
+      .hero-title {
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+      }
+      .hero-sub {
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+      }
+
+      /* Responsive padding for sections */
+      section {
+        padding: 40px 16px;
+      }
+
+      /* Cards and feature grid responsive behavior */
+      .card-vertical,
+      .feature {
+        height: 100%;
+      }
+
+      /* Ensure no row overflow on small screens */
+      .row {
+        margin-right: 0;
+        margin-left: 0;
+      }
+      /* ===== Navbar Fixes ===== */
+
+      /* Always keep hamburger on the right */
+      .navbar-toggler {
+        margin-left: auto; /* pushes hamburger to extreme right */
+      }
+
+      /* Prevent logo text from cutting off */
+      .institute-name {
+        white-space: normal; /* allow wrap */
+        line-height: 1.2;
+        font-size: clamp(
+          0.75rem,
+          1.5vw,
+          0.9rem
+        ); /* scale text on smaller screens */
+        max-width: 140px; /* prevents overflow in narrow screens */
+      }
+
+      /* Ensure navbar items do not overlap text */
+      @media (max-width: 1199px) {
+        .navbar-nav {
+          flex-wrap: wrap;
+        }
+      }
+
+      /* Reduce padding on smaller screens so everything fits */
+      @media (max-width: 992px) {
+        .navbar-brand img {
+          height: 32px; /* slightly smaller logo */
+        }
+        .institute-name {
+          font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+          max-width: 120px;
+        }
+      }
+      /* ===== Logo Strip → Carousel on Small Screens ===== */
+      @media (max-width: 768px) {
+        .logo-strip {
+          display: flex;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          gap: 12px;
+          padding-bottom: 10px;
+        }
+        .logo-item {
+          flex: 0 0 80%; /* each logo takes 80% width */
+          scroll-snap-align: center;
+          margin: 0;
+        }
+      }
+      .logo-strip {
+        display: flex;
+        gap: 20px;
+        will-change: transform;
+        transition: transform 0.1s linear;
+      }
+      .logo-item {
+        flex: 0 0 auto;
+      }
+      /* 🔧 Small screen: show fewer logos by shrinking them */
+@media (max-width: 768px) {
+  .logo-strip img {
+    height: 40px;   /* smaller logos */
+    margin-right: 10px; /* less spacing */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-strip img {
+    height: 35px;   /* even smaller for very small devices */
+    margin-right: 5px;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top"
+    >
+      <div class="container">
+        <!-- Left: Logos + Name -->
+        <a
+          class="navbar-brand d-flex align-items-center gap-2"
+          href="index.html"
+        >
+          <!-- <img src="assets/ied logo.jpg" alt="Institute Logo"> -->
+          <img src="assets/logo.gif" alt="Govt Logo" />
+          <!-- <div class="institute-name">
+            <strong>IEDUP-IIC</strong><br />
+            <span>Incubation Innovation Centre</span>
+          </div> -->
+        </a>
+
+        <!-- Mobile Toggle Button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    About
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+    <li><a class="dropdown-item" href="about.html">About IIC</a></li>
+    <li><a class="dropdown-item" href="events.html">Events</a></li>
+    <li><a class="dropdown-item" href="about-ied.html">About IED UP</a></li>
+    <li><a class="dropdown-item" href="team.html">Team</a></li>
+    <li><a class="dropdown-item" href="partner.html">Partners</a></li>
+  </ul>
+</li>
+            <li class="nav-item">
+              <a class="nav-link" href="#support">Support & Facilities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="programs.html">Programs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="experts.html">Expert Pool</a>
+            </li>
+             <li class="nav-item"><a class="nav-link active" href="incubation-iediic.html">Incubation</a></li>
+             <li class="nav-item"><a class="nav-link" href="itech.html">I-tech</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===== Slim Hero ===== -->
+    <header class="hero-slim">
+      <div class="hero-wrap container">
+        <div class="hero-kicker">Incubation at IEDIIC</div>
+        <h1 class="hero-title">
+          Step into IEDIIC — India’s first incubation focusing on exports
+        </h1>
+        <p class="hero-sub">
+          From idea to international markets: guidance, infrastructure, and
+          networks to help you scale globally.
+        </p>
+        <a class="btn-ghost mt-1" href="incubation.html">
+          <i class="bi bi-rocket-takeoff-fill"></i> Apply for Incubation
+        </a>
+      </div>
+    </header>
+
+    <!-- ===== Your Challenges (4 vertical cards) ===== -->
+    <section>
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="section-title">Your Challenges for Incubation</h2>
+          <p class="section-sub mx-auto">
+            We help founders overcome the hardest zero-to-one (and one-to-n)
+            hurdles.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card-vertical">
+              <div class="icon-pill mb-3"><i class="bi bi-cash-coin"></i></div>
+              <h5 class="fw-bold">Funding Readiness</h5>
+              <p class="mb-0 text-secondary">
+                Shape your business model, metrics, and pitch for grants,
+                angels, and VC.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card-vertical">
+              <div class="icon-pill mb-3"><i class="bi bi-globe2"></i></div>
+              <h5 class="fw-bold">Market Access</h5>
+              <p class="mb-0 text-secondary">
+                Pilot programs, partnerships, and export channels to validate
+                and scale.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card-vertical">
+              <div class="icon-pill mb-3">
+                <i class="bi bi-shield-lock"></i>
+              </div>
+              <h5 class="fw-bold">Compliance & IP</h5>
+              <p class="mb-0 text-secondary">
+                IPR, certifications, and regulatory support for domestic &
+                global markets.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card-vertical">
+              <div class="icon-pill mb-3"><i class="bi bi-cpu"></i></div>
+              <h5 class="fw-bold">Tech & Product</h5>
+              <p class="mb-0 text-secondary">
+                Prototyping, labs, and expert reviews to accelerate development.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== What We Offer ===== -->
+    <section class="bg-light">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="section-title">What We Offer</h2>
+          <p class="section-sub mx-auto">
+            Everything you need to turn ambition into outcomes.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="feature h-100">
+              <h5>
+                <i class="bi bi-people-fill me-2 text-primary"></i>Support
+                System
+              </h5>
+              <p class="mb-0 text-secondary">
+                Hands-on mentoring, expert clinics, and peer learning cohorts.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature h-100">
+              <h5>
+                <i class="bi bi-globe me-2 text-primary"></i>Market Access
+              </h5>
+              <p class="mb-0 text-secondary">
+                Trade fairs, buyer connects, channel partners, and export
+                readiness.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature h-100">
+              <h5>
+                <i class="bi bi-building me-2 text-primary"></i>Infrastructure
+              </h5>
+              <p class="mb-0 text-secondary">
+                Co-working, labs, and prototyping facilities to build faster.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature h-100">
+              <h5>
+                <i class="bi bi-cash-stack me-2 text-primary"></i>Financial &
+                Legal
+              </h5>
+              <p class="mb-0 text-secondary">
+                Investor connects, grants, compliance, and IPR/legal guidance.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature h-100">
+              <h5>
+                <i class="bi bi-lightbulb me-2 text-primary"></i>Innovation &
+                Technology
+              </h5>
+              <p class="mb-0 text-secondary">
+                AI/IoT testbeds, product reviews, and access to emerging tech.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature h-100">
+              <h5>
+                <i class="bi bi-diagram-3 me-2 text-primary"></i>Community &
+                Network
+              </h5>
+              <p class="mb-0 text-secondary">
+                Alumni founders, corporate partners, and global expert pool.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Apply for Incubation (CTA) ===== -->
+    <section>
+      <div class="container">
+        <div
+          class="p-4 p-md-5 rounded-4 border cta-panel d-flex flex-column flex-lg-row align-items-center justify-content-between gap-3"
+        >
+          <div>
+            <h3 class="mb-1 fw-bold">Apply for Incubation</h3>
+            <p class="mb-0 text-secondary">
+              Ready to build with IEDIIC? Submit your application
+            </p>
+          </div>
+          <a href="incubation.html" class="btn btn-gradient">
+            <i class="bi bi-rocket-takeoff me-2"></i> Apply Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Companies Incubated (logo row) ===== -->
+    <section class="bg-light">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="section-title">Companies Incubated at IEDIIC</h2>
+          <p class="section-sub mx-auto">
+            A snapshot of startups we’re proud to support.
+          </p>
+        </div>
+
+        <div class="logo-strip py-2 px-1">
+          <!-- Replace logo*.png with real logos; repeat or add more -->
+          <span class="logo-item"
+            ><img src="assets/Dakshak logo.jpg" alt="Startup 1"
+          /></span>
+          <span class="logo-item"
+            ><img src="assets/ai life bot logo.jpg" alt="Startup 2"
+          /></span>
+          <span class="logo-item"
+            ><img src="assets/comscope.jpg" alt="Startup 3"
+          /></span>
+          <span class="logo-item"
+            ><img src="assets/huda international visiting.jpg" alt="Startup 4"
+          /></span>
+          <span class="logo-item"
+            ><img src="logo-startup-5.png" alt="Startup 5"
+          /></span>
+          <span class="logo-item"
+            ><img src="logo-startup-6.png" alt="Startup 6"
+          /></span>
+          <span class="logo-item"
+            ><img src="logo-startup-7.png" alt="Startup 7"
+          /></span>
+          <span class="logo-item"
+            ><img src="logo-startup-8.png" alt="Startup 8"
+          /></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Meet the Makers ===== -->
+    <section>
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-7">
+            <h2 class="section-title mb-2">Meet the Makers</h2>
+            <p class="section-sub">
+              Learn more about the team behind IEDIIC—the mentors, experts, and
+              operators who help founders move faster.
+            </p>
+          </div>
+          <div class="col-lg-5 text-lg-end">
+            <a href="team.html" class="btn btn-gradient">
+              <i class="bi bi-people-fill me-2"></i> Learn More About the Team
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="py-4">
+      <div class="container text-center">
+        <div class="small">
+          © <span id="year"></span> IEDIIC — Incubation for Innovation & Exports
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const items = document.querySelectorAll(".card-vertical, .feature");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = "translateY(0)";
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        items.forEach((item) => {
+          item.style.opacity = 0;
+          item.style.transform = "translateY(20px)";
+          item.style.transition = "all 0.6s ease-out";
+          observer.observe(item);
+        });
+      });
+    </script>
+    <script>
+      // Optional: smooth scroll for carousel effect
+      document.querySelectorAll(".logo-strip").forEach((strip) => {
+        strip.style.scrollBehavior = "smooth";
+      });
+    </script>
+
+  </body>
+</html>

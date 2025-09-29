@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Our Team • IEDUP</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+/* ✅ UNIVERSAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* prevent horizontal scroll */
+}
+body{
+  padding-top: 76.8px;;
+}
+
+/* ✅ NAVBAR FIX - FULLY RESPONSIVE */
+.navbar {
+  flex-wrap: nowrap;
+}
+.navbar-brand img {
+  max-height: 50px;
+}
+.institute-name {
+  font-size: clamp(0.75rem, 1.8vw, 1rem);
+  line-height: 1.2;
+}
+.navbar-nav .nav-link {
+  white-space: nowrap;
+  padding: 8px 12px;
+}
+
+/* Ensure navbar items wrap nicely on collapse */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  .nav-link {
+    width: 100%;
+  }
+}
+.navbar .nav-link.active {
+  font-weight: 600;
+  color: #0d6efd !important; /* Highlight active link (blue) */
+} 
+/* ✅ HERO SECTION */
+.hero-section {
+  position: relative;
+  background: url("assets/team-banner.jpg") no-repeat center center/cover;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+.hero-content h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+}
+.hero-content p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+/* ✅ TEAM CARDS */
+.team-card {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  background: white;
+}
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+.team-card img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+}
+.team-card h5 {
+  margin: 15px 0 5px;
+  font-weight: 700;
+}
+.team-card p {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+.social-links a {
+  margin: 0 5px;
+  color: #0d6efd;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.social-links a:hover {
+  color: #6610f2;
+}
+
+/* ✅ FOOTER RESPONSIVENESS */
+footer .container {
+  text-align: center;
+}
+@media (min-width: 992px) {
+  footer .container {
+    text-align: left;
+    flex-direction: row;
+  }
+}
+
+</style>
+
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- NAVBAR -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand d-flex align-items-center gap-2"
+          href="index.html"
+        >
+          <img src="assets/logo.gif" alt="IEDUP Logo" height="50" />
+          <!-- <div class="institute-name">
+            <strong>IEDUP</strong><br />
+            <span>Institute for Entrepreneurship Development, UP</span>
+          </div> -->
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+  <a class="nav-link active dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Team
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+    <li><a class="dropdown-item" href="about.html">About IIC</a></li>
+    <li><a class="dropdown-item" href="events.html">Events</a></li>
+    <li><a class="dropdown-item" href="about-ied.html">About IED UP</a></li>
+    <li><a class="dropdown-item" href="partner.html">Partners</a></li>
+  </ul>
+</li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="programs.html">Programs</a>
+            </li>
+             <li class="nav-item"><a class="nav-link" href="experts.html">Expert Pool</a></li>
+        <li class="nav-item"><a class="nav-link" href="incubation-iediic.html">Incubation</a></li>
+        <li class="nav-item"><a class="nav-link" href="itech.html">I-tech</a></li>
+           
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Meet Our Team</h1>
+        <p class="lead">
+          The people driving innovation and entrepreneurship in UP
+        </p>
+      </div>
+    </section>
+
+    <!-- TEAM MEMBERS -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="text-center fw-bold mb-5">Our Leadership & Experts</h2>
+        <div class="row g-4">
+          <!-- ✅ Team Member 1 -->
+          <div class="col-md-4">
+            <div class="team-card">
+              <img src="assets/director sir.png" alt="Team Member" />
+              <h5>Mr Pawan Agrawal</h5>
+              <p>Director, IEDUP</p>
+              <div class="social-links mb-3">
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ✅ Team Member 2 -->
+          <div class="col-md-4">
+            <div class="team-card">
+              <img src="assets/mamta mam.jpg" alt="Team Member" />
+              <h5>Ms. Mamta Chauhan</h5>
+              <p>Profile name</p>
+              <div class="social-links mb-3">
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ✅ Team Member 3 -->
+          <div class="col-md-4">
+            <div class="team-card">
+              <img src="assets/alok sir.jpg" alt="Team Member" />
+              <h5>Mr.Alok Pandey</h5>
+              <p>Advisor IIC IED UP</p>
+              <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/alokpandeyentrepreneur?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="team-card">
+              <img src="assets/Vibhu sir.jpg" alt="Team Member" />
+              <h5>Mr. Vibhu Dixit</h5>
+              <p>Advisor IIC IED UP</p>
+              <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/vibhu-dixit?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="team-card">
+              <img src="assets/brijesh Sir.jpg" alt="Team Member" />
+              <h5>Mr. Brijesh Rajput</h5>
+              <p>Incubation Manager</p>
+              <div class="social-links mb-3">
+                <a href="https://www.linkedin.com/in/brijesh-rajput-2b1a41124?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="team-card">
+              <img src="assets/Profile image abhishek.jpg" alt="Team Member" />
+              <h5>Mr.Abhishek Singh</h5>
+              <p>Software Developer</p>
+              <div class="social-links mb-3">
+                <a
+                  href="https://www.linkedin.com/in/abhishek-singh-4052a6229?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                  target="_blank"><i class="bi bi-linkedin"></i
+                ></a>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="team-card">
+              <img src="assets/team3.jpg" alt="Team Member" />
+              <h5>Mr.Shivam Akash</h5>
+              <p>Graphic Designer</p>
+              <div class="social-links mb-3">
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+      <div
+        class="container d-flex flex-column flex-lg-row justify-content-between align-items-center"
+      >
+        <div>
+          <strong>IEDUP</strong> — Institute for Entrepreneurship Development,
+          Uttar Pradesh
+        </div>
+        <div class="text-muted small mt-3 mt-lg-0">
+          Contact: info@iedup.in | +91 12345 67890
+        </div>
+        <div class="mt-3 text-muted small">© <span id="year"></span> IEDUP</div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap + Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

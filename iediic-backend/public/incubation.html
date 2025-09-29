@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incubation Form</title>
+
+  <!-- ✅ Bootstrap for responsive layout -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* 🔑 Responsive header styling */
+    .form-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-header img {
+      max-width: 100%;
+      height: auto;
+      max-height: 200px;
+      margin-bottom: 10px;
+      object-fit: contain;
+    }
+
+    .form-header h1 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: bold;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .form-header p {
+      font-size: 1rem;
+      color: #6c757d;
+    }
+
+    /* 🔑 Limit form width on large screens for readability */
+    .form-card {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    /* 🔑 Make payment section readable */
+    .payment-info {
+      background: #f8f9fa;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    /* 🔑 Mobile-friendly spacing */
+    @media (max-width: 576px) {
+      .container {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+
+  <!-- HEADER SECTION -->
+  <div class="form-header">
+    <img src="assets/Poster header.jpg" alt="Institute Poster">
+    <h1>Institute of Entrepreneurship Development, U.P.</h1>
+    <h1>Registration Form for Incubation</h1>
+  </div>
+
+  <!-- FORM -->
+  <form id="incubationForm" class="card p-4 shadow-sm form-card" >
+    <div class="mb-3">
+      <label class="form-label">Email *</label>
+      <input type="email" name="email" class="form-control" required>
+    </div>
+<div class="mb-3">
+  <label for="contactNumber" class="form-label">Contact Number*</label>
+  <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+</div>
+    <div class="mb-3">
+      <label class="form-label">Applicant Name *</label>
+      <input type="text" name="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Company Name</label>
+      <input type="text" name="companyname" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Applicant/Company's Registered Address</label>
+      <input type="text" name="address" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Applicant Type *</label>
+      <select name="applicantType" class="form-control" required>
+        <option value="" disabled selected hidden>Applicant Type</option>
+        <option>Company</option>
+        <option>Individual</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">CIN Number/Udhyam Adhar Registration Number</label>
+      <input type="text" name="registrationnumber" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Vision & Mission</label>
+      <textarea class="form-control" name="visionMission" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Core Products/Services</label>
+      <textarea class="form-control" name="coreProducts" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">What Supports are you looking for?</label>
+      <textarea class="form-control" name="supportsNeeded" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Type of Incubation *</label>
+      <select class="form-control" name="incubationType" required>
+        <option value="" disabled selected hidden>Type of Incubation</option>
+        <option value="Physical">Physical (₹8,850 per seat / 3 months)</option>
+        <option value="Virtual">Virtual (₹5,310 per seat / 3 months)</option>
+      </select>
+    </div>
+
+   <div class="mb-3" id="paymentDetails" style="display:none;">
+  <h5>Payment Details</h5>
+  <div class="payment-info">
+    <strong>Amount:</strong> <span id="paymentAmount"></span> <br>
+    Account Holder: Institute of Entrepreneurship Development, U.P. Lucknow <br>
+    Bank: HDFC Bank, Mahanagar, Lucknow <br>
+    Account No: 50200049003607 <br>
+    IFSC: HDFC0009063
+  </div>
+</div>
+
+
+    <div class="mb-3">
+      <label class="form-label">Upload Payment Screenshot *</label>
+      <input class="form-control" type="file" name="paymentScreenshot" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">UTR No *</label>
+      <input class="form-control" name="utrNumber" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Upload Company Logo</label>
+      <input class="form-control" type="file" name="companyLogo">
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Submit</button>
+  </form>
+</div>
+
+<script>
+const form = document.getElementById("incubationForm");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const formData = new FormData(this); // includes files automatically
+
+  try {
+    const res = await fetch("http://localhost:3000/api/form/incubation", {
+      method: "POST",
+      body: formData // do NOT set Content-Type, browser handles it
+    });
+    const result = await res.json();
+    alert(result.message);
+    this.reset();
+  } catch(err) {
+    console.error(err);
+    alert("❌ Submission failed!");
+  }
+});
+
+
+// ✅ Show payment section dynamically based on selected incubation type
+const incubationSelect = document.querySelector("select[name='incubationType']");
+const paymentDetails = document.getElementById("paymentDetails");
+const paymentAmount = document.getElementById("paymentAmount");
+
+incubationSelect.addEventListener("change", function() {
+  if (this.value === "Physical") {
+    paymentAmount.textContent = "₹8,850 per seat / 3 months";
+    paymentDetails.style.display = "block";
+  } else if (this.value === "Virtual") {
+    paymentAmount.textContent = "₹5,310 per seat / 3 months";
+    paymentDetails.style.display = "block";
+  } else {
+    paymentDetails.style.display = "none";
+  }
+});
+</script>
+
+
+</body>
+</html>

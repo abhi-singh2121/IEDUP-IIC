@@ -1,0 +1,5 @@
+# Ignore Node modules
+iediic-backend/node_modules/
+
+# Ignore environment variables
+iediic-backend/.env
