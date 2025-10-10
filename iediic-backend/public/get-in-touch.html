@@ -16,12 +16,22 @@
       /* ==========================
    GET IN TOUCH PAGE – FULL RESPONSIVENESS
    ========================== */
+.navbar-brand img {
+  height: 50px;      /* Logo height */
+  width: auto;       /* Maintain aspect ratio */
+}
 
+.itechlogo {
+  height: 65px; /* Increase/decrease as needed */
+  width: auto;  /* Keeps aspect ratio */
+  object-fit: contain; /* Prevents distortion */
+  cursor: pointer; /* Shows pointer on hover */
+}
       /* HERO SECTION */
       .hero-contact {
         background: url("assets/contact-hero.jpg") no-repeat center center/cover;
         position: relative;
-        min-height: 40vh;
+        min-height: 30vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -197,7 +207,12 @@
           class="navbar-brand d-flex align-items-center gap-2"
           href="index.html"
         >
-          <img src="assets/logo.gif" alt="IEDUP Logo" height="50" />
+          <!-- <img src="assets/logo.gif" alt="IEDUP Logo" height="50" /> -->
+            <img src="assets/IED LOGO.png" alt="logo">
+      <img src="assets/IIC LOGO.png" alt="logo">
+          <a href="https://www.itechskillbharat.com" target="_blank">
+          <img class="itechlogo" width="75px" height="140px" src="assets/itechlogo-1.png" alt="Institute Logo">
+            </a>
           <!-- INSTITUTE NAME COMMENTED OUT FOR BETTER RESPONSIVENESS -->
           <!-- <div class="institute-name">
           <strong>IEDUP</strong><br>
@@ -233,7 +248,7 @@
         <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
         <li class="nav-item"><a class="nav-link" href="experts.html">Expert Pool</a></li>
         <li class="nav-item"><a class="nav-link" href="incubation-iediic.html">Incubation</a></li>
-        <li class="nav-item"><a class="nav-link" href="itech.html">I-tech</a></li>
+        <li class="nav-item"><a class="nav-link" href="itech.html">itech</a></li>
 
         <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
            

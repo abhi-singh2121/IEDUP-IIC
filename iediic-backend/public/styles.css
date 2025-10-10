@@ -25,11 +25,20 @@ a:hover {
 .navbar {
   background-color: #fff;            /* White background */
   border-bottom: 1px solid #e5e7eb;  /* Light gray border */
+  height: 80px;
 }
+
 
 .navbar-brand img {
   height: 50px;      /* Logo height */
   width: auto;       /* Maintain aspect ratio */
+}
+
+.itechlogo {
+  height: 65px; /* Increase/decrease as needed */
+  width: auto;  /* Keeps aspect ratio */
+  object-fit: contain; /* Prevents distortion */
+  cursor: pointer; /* Shows pointer on hover */
 }
 
 .institute-name {
@@ -71,7 +80,7 @@ a:hover {
   .incubation-strip h2 {
     font-size: 1.1rem;
     line-height: 1.4;
-    padding: 0 5px;
+    padding: 20px 0;
   }
 }
 
@@ -118,11 +127,14 @@ a:hover {
 .hero-image {
   position: relative;
   padding: 0;
+  height: 500px;
+  /* object-fit: fill; */
   clip-path: polygon(8% 0, 100% 0, 100% 100%, 8% 100%, 0 50%);
   background: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .hero-image img {

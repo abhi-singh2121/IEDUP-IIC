@@ -107,7 +107,7 @@
 
     // Fetch Dashboard Counts
     async function fetchDashboardSummary() {
-      const res = await fetch('/api/admin/dashboard-summary');
+      const res = await fetch('/api/admin/stats');
       const data = await res.json();
       document.getElementById('incubation-count').textContent = data.incubation;
       document.getElementById('preincubation-count').textContent = data.preIncubation;
@@ -134,7 +134,7 @@
 
     // Initial fetch
     fetchDashboardSummary();
-    fetchTableData('/api/admin/incubation', 'incubation-tbody');
+    fetchTableData('/api/admin/recent-incubation', 'incubation-tbody');
     fetchTableData('/api/admin/pre-incubation', 'preincubation-tbody');
     fetchTableData('/api/admin/contact', 'contact-tbody');
 

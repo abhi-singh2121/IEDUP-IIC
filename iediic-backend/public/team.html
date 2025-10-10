@@ -28,7 +28,15 @@ body{
   flex-wrap: nowrap;
 }
 .navbar-brand img {
-  max-height: 50px;
+  height: 50px;      /* Logo height */
+  width: auto;       /* Maintain aspect ratio */
+}
+
+.itechlogo {
+  height: 65px; /* Increase/decrease as needed */
+  width: auto;  /* Keeps aspect ratio */
+  object-fit: contain; /* Prevents distortion */
+  cursor: pointer; /* Shows pointer on hover */
 }
 .institute-name {
   font-size: clamp(0.75rem, 1.8vw, 1rem);
@@ -63,7 +71,7 @@ body{
 .hero-section {
   position: relative;
   background: url("assets/team-banner.jpg") no-repeat center center/cover;
-  min-height: 40vh;
+  min-height: 25vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -151,7 +159,12 @@ footer .container {
           class="navbar-brand d-flex align-items-center gap-2"
           href="index.html"
         >
-          <img src="assets/logo.gif" alt="IEDUP Logo" height="50" />
+          <!-- <img src="assets/logo.gif" alt="IEDUP Logo" height="50" /> -->
+            <img src="assets/IED LOGO.png" alt="logo">
+      <img src="assets/IIC LOGO.png" alt="logo">
+          <a href="https://www.itechskillbharat.com" target="_blank">
+          <img class="itechlogo" width="75px" height="140px" src="assets/itechlogo-1.png" alt="Institute Logo">
+            </a>
           <!-- <div class="institute-name">
             <strong>IEDUP</strong><br />
             <span>Institute for Entrepreneurship Development, UP</span>
