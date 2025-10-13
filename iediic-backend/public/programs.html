@@ -40,6 +40,9 @@
     font-weight: 400;
     opacity: 0.9;
   }
+  .lead{
+    height: 2vh;
+  }
 
   /* Animated gradient movement */
   @keyframes gradientMove {
@@ -183,6 +186,52 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
+.program-benefits {
+  background-color: #f9f9f9;
+  padding: 60px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.program-benefits h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.program-benefits p {
+  font-size: 1.1rem;
+  color: #6c757d;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.benefits-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  background: #ffffff;
+  border-left: 4px solid #007bff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.benefits-list li:hover {
+  background-color: #e9f2ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.benefits-list .icon {
+  font-size: 1.8rem;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
 
 </style>
 </head>
@@ -261,8 +310,8 @@ section {
         <div class="col-md-4" data-animate>
           <div class="card program-card shadow-sm h-100">
             <div class="card-body">
-              <h5 class="card-title">Innovation Challenge</h5>
-              <p class="card-text">Annual competition where students and startups showcase their solutions to real-world problems and win seed funding.</p>
+              <h5 class="card-title">NEST</h5>
+              <p class="card-text">NEST – Nurturing Entrepreneurs with Skills & Training is the flagship program of the Institute of Entrepreneurship Development, Uttar Pradesh (IEDUP)—an autonomous body under the Govt. of UP.</p>
               <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
             </div>
           </div>
@@ -270,7 +319,7 @@ section {
         <div class="col-md-4" data-animate>
           <div class="card program-card shadow-sm h-100">
             <div class="card-body">
-              <h5 class="card-title">AI & ML Workshop</h5>
+              <h5 class="card-title">Webinar </h5>
               <p class="card-text">Hands-on sessions on Artificial Intelligence and Machine Learning for building future-ready startups.</p>
               <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
             </div>
@@ -279,38 +328,42 @@ section {
       </div>
     </div>
   </section>
+  <!-- ===== Why Join Section ===== -->
+  <section class="py-5 program-benefits">
+  <div class="container">
+    <h2 class="text-center mb-4 text-primary">Why Join Our Programs?</h2>
+    <p class="text-center text-muted mb-4">
+      Discover how our specialized programs empower learners, entrepreneurs, and professionals to gain future-ready skills, global exposure, and hands-on expertise.
+    </p>
+    <ul class="benefits-list">
+      <li>
+        <span class="icon">🎯</span>
+        <strong>Learn from Industry Experts:</strong> Sessions are led by experienced professionals and domain specialists who bring real-world knowledge from diverse industries.
+      </li>
+      <li>
+        <span class="icon">🌍</span>
+        <strong>Global Business Exposure:</strong> Our Import & Export webinars provide insights into international trade, logistics, and business expansion opportunities.
+      </li>
+      <li>
+        <span class="icon">🧠</span>
+        <strong>Cutting-Edge Technology Learning:</strong> Learn about Quantum Computing, AI, ML, and Cybersecurity with practical applications.
+      </li>
+      <li>
+        <span class="icon">🏭</span>
+        <strong>Smart Industry Manager Training:</strong> Equip yourself with skills in automation, IoT, data analytics, and innovation management.
+      </li>
+      <li>
+        <span class="icon">🚀</span>
+        <strong>Entrepreneurship Development:</strong> The NEST Program helps students and young innovators turn ideas into scalable ventures.
+      </li>
+      <li>
+        <span class="icon">🤝</span>
+        <strong>Networking & Collaboration:</strong> Join a vibrant community of learners, mentors, and entrepreneurs to create meaningful connections.
+      </li>
+    </ul>
+  </div>
+</section>
 
-  <!-- ===== Extended Section with Dummy Content ===== -->
-  <section>
-    <div class="container">
-      <h2 class="text-center mb-5">Why Join Our Programs?</h2>
-      <div class="row g-4">
-        <div class="col-md-6">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum nunc eget elit convallis, 
-            vitae tempor turpis viverra. Nullam nec risus ac nulla ultrices imperdiet nec et urna. Proin sit amet 
-            consectetur tortor. Vestibulum bibendum fermentum nisl, in suscipit sem posuere ut. Vivamus volutpat, 
-            urna vitae consequat fermentum, augue elit volutpat augue, et congue neque sapien eu orci.
-          </p>
-          <p>
-            Pellentesque ultricies dui ut mauris luctus, nec feugiat magna congue. Duis finibus tincidunt lectus, 
-            sed vehicula neque accumsan nec. Sed faucibus lorem nec metus tincidunt, vitae pretium erat varius.
-          </p>
-        </div>
-        <div class="col-md-6">
-          <p>
-            Integer ut felis sit amet dolor fringilla luctus. Aliquam erat volutpat. Sed blandit sapien vitae diam 
-            gravida, at feugiat nibh suscipit. Suspendisse dictum feugiat dui, ut tincidunt tortor tincidunt vel. 
-            Donec a risus et odio cursus vulputate. Quisque porta orci vitae vestibulum finibus.
-          </p>
-          <p>
-            Maecenas ac justo vel augue imperdiet condimentum a nec massa. Suspendisse potenti. Ut malesuada felis 
-            sed arcu ullamcorper pretium. Praesent vel luctus ligula, vitae congue ex.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ===== Footer ===== -->
   <footer class="bg-dark text-white py-3 mt-auto">

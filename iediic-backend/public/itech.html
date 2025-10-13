@@ -124,6 +124,89 @@
   }
 }
 
+/* ===== ITECH PROGRAMS (POSTER STYLE) ===== */
+.itech-programs {
+  background: #ffffff;
+  padding: 4rem 0;
+  color: #1a1a1a;
+  font-family: "Inter", sans-serif;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  color: #555;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.itech-program {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.itech-program:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.itech-img {
+  flex: 1 1 40%;
+  min-width: 280px;
+}
+
+.itech-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.itech-text {
+  flex: 1 1 55%;
+}
+
+.itech-text h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 0.7rem;
+}
+
+.itech-text p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .itech-program {
+    flex-direction: column !important;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .itech-img img {
+    border-radius: 12px;
+  }
+  .itech-text {
+    text-align: left;
+  }
+}
+
   </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -223,21 +306,19 @@
   <!-- DIRECTORS -->
   <section class="py-5">
     <div class="container">
-      <h2 class="section-title">Meet Our Directors</h2>
+      <h2 class="section-title">Core Areas of Work</h2>
       <div class="row g-4">
         <div class="col-md-6">
           <div class="director-card">
-            <h5>Mr. Alok Pandey</h5>
-            <p class="text-muted">Entrepreneur | Mentor | Social Impact Leader</p>
-            <p>President – Kanpur Angels | Mentor – Atal Innovation Mission (NITI Aayog), IIT Kanpur</p>
-            <ul>
-              <li>Trained 9000+ students and mentored 1200+ entrepreneurs</li>
-              <li>Established Centres of Excellence in Chip Design & Quantum Computing</li>
-              <li>Featured in LIMCA BOOK OF RECORDS for 11-hour Marathon Workshop</li>
-            </ul>
+           
+            <p class="text-muted"> Training & Skill Development </p>
+            <p class="text-muted">Entrepreneurship & Startup Mentorship </p>
+            <p class="text-muted"> Corporate & Institutional Consultancy</p>
+            <p class="text-muted">  Incubation & Innovation Programs </p>
+           
           </div>
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <div class="director-card">
             <h5>Mr. Vibhu Dixit</h5>
             <p class="text-muted">Business Coach | Export Consultant | Global Mentor</p>
@@ -248,7 +329,7 @@
               <li>Guided startups to scale exports & access global markets</li>
             </ul>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -266,8 +347,105 @@
     </div>
   </section>
 
+ <!-- ===== ITECH TRAINING & ENTREPRENEURSHIP DEVELOPMENT PROGRAMS ===== -->
+<section id="itech-programs" class="itech-programs">
+  <div class="container">
+    <h2 class="section-title">Training & Entrepreneurship Development Programs</h2>
+    <p class="section-subtitle">
+      ITech delivers impactful entrepreneurship programs through hands-on workshops, sustainability-driven projects, and startup ecosystem initiatives that inspire innovation and real-world business creation.
+    </p>
+
+    <div class="itech-program">
+      <div class="itech-img">
+        <img src="assets/marathon.png" alt="Marathon Entrepreneurship Workshop">
+      </div>
+      <div class="itech-text">
+        <h3>Marathon Entrepreneurship Workshop</h3>
+        <p>
+          The Marathon Entrepreneurship Workshop is a record-setting initiative that combines intensive business ideation, strategy design, and startup readiness under one continuous learning format. Participants go through structured mentorship, pitching sessions, and real-time business simulations designed to spark entrepreneurial thinking.
+        </p>
+        <p>
+          It has engaged thousands of students and aspiring entrepreneurs, creating an immersive platform that connects academic learning to practical startup execution.
+        </p>
+      </div>
+    </div>
+
+    <div class="itech-program">
+      <div class="itech-img">
+        <img src="assets/SDG.png" alt="SDG Entrepreneurship Workshop">
+      </div>
+      <div class="itech-text">
+        <h3>SDG Entrepreneurship Workshop</h3>
+        <p>
+          In partnership with WWF and aligned with the UN’s Sustainable Development Goals, this workshop promotes sustainability-focused entrepreneurship. 
+          Participants learn to build business models that address water conservation, renewable resources, and climate-smart innovation.
+        </p>
+        <p>
+          The workshop inspires young innovators to transform environmental responsibility into viable business opportunities.
+        </p>
+      </div>
+    </div>
+
+    <div class="itech-program">
+      <div class="itech-img">
+        <img src="assets/entrepreneur cafe.png" alt="Entrepreneurs Café">
+      </div>
+      <div class="itech-text">
+        <h3>Entrepreneurs Café</h3>
+        <p>
+          Entrepreneurs Café is a collaborative networking platform connecting founders, mentors, investors, and industry professionals. 
+          Through open discussions and interactive sessions, it fosters idea exchange, startup mentoring, and growth opportunities for early-stage entrepreneurs.
+        </p>
+      </div>
+    </div>
+
+    <div class="itech-program">
+      <div class="itech-img">
+        <img src="assets/safar.png" alt="Startup Safar">
+      </div>
+      <div class="itech-text">
+        <h3>Startup Safar</h3>
+        <p>
+          Startup Safar celebrates entrepreneurial journeys through real-life stories of founders. 
+          These sessions bring authentic experiences to students and startup enthusiasts, providing insights into problem-solving, innovation, and resilience.
+        </p>
+      </div>
+    </div>
+
+    <div class="itech-program">
+      <div class="itech-img">
+        <img src="assets/nexus.png" alt="Startup Nexus">
+      </div>
+      <div class="itech-text">
+        <h3>Startup Nexus</h3>
+        <p>
+          Startup Nexus is ITech’s annual startup conclave that brings together investors, startups, academia, and government. 
+          The event features startup pitching, panel discussions, ideathons, and showcases that foster meaningful collaboration within the innovation ecosystem.
+        </p>
+      </div>
+    </div>
+
+    <div class="itech-program">
+      <div class="itech-img">
+        <img src="assets/simp.png" alt="Smart Industry Managers Program">
+      </div>
+      <div class="itech-text">
+        <h3>SIMP — Smart Industry Managers Program</h3>
+        <p>
+          The SIMP program bridges the gap between academia and industry through practical management exposure, industrial visits, and hands-on project learning. 
+          It equips participants with essential skills to manage startups, MSMEs, and corporate initiatives effectively.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ===== END SECTION ===== -->
+
+
+
   <!-- CAROUSEL -->
-  <section class="py-5">
+  <!-- <section class="py-5">
     <div class="container">
       <h2 class="section-title">Programs & Highlights</h2>
       <div id="itechCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -279,7 +457,7 @@
             <img src="assets/sdg-event.jpg" class="d-block w-100" alt="SDG Workshop">
           </div>
           <div class="carousel-item">
-            <img src="assets/entrepreneur-cafe.jpg" class="d-block w-100" alt="Entrepreneur Cafe">
+            <img src="assets/entrepreneur cafe.png" class="d-block w-100" alt="Entrepreneur Cafe">
           </div>
           <div class="carousel-item">
             <img src="assets/startup-nexus.jpg" class="d-block w-100" alt="Startup Nexus">
@@ -293,7 +471,7 @@
         </button>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- CONTACT SECTION -->
   <section class="py-5 bg-dark text-white">
