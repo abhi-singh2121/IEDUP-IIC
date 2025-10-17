@@ -1,5 +1,6 @@
 const Incubation = require("../models/Incubation");
 const PreIncubation = require("../models/PreIncubation");
+const AiLab = require("../models/AiLabRegistration");
 const Contact = require("../models/Contact");
 
 exports.submitIncubationForm = async (req, res) => {
@@ -59,3 +60,17 @@ exports.submitContactForm = async (req, res) => {
     res.status(500).json({ success: false, message: "Server error!", error: err.message });
   }
 };
+
+exports.submitAiLabForm = async (req, res) => {
+  try {
+    const AiLab = require("../models/AiLabRegistration");
+    const aiLab = new AiLab(req.body);
+    await aiLab.save();
+    console.log("✅ AI Lab Form saved:", req.body);
+    res.json({ success: true, message: "AI Lab registration submitted successfully!" });
+  } catch (err) {
+    console.error("❌ Error in submitAiLabForm:", err);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+

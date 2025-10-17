@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require("multer");
 
 // ✅ Import your controller functions
-const { submitIncubationForm, submitPreIncubationForm, submitContactForm } = require("../controllers/forms");
+const { submitIncubationForm, submitPreIncubationForm, submitAiLabForm, submitContactForm } = require("../controllers/forms");
 
 // ✅ Multer setup for file uploads
 const upload = multer({ dest: "uploads/" });
@@ -22,6 +22,8 @@ router.post(
   "/pre-incubation",
   submitPreIncubationForm
 );
+
+router.post("/ai-lab", submitAiLabForm);
 
 router.post(
   "/contact",

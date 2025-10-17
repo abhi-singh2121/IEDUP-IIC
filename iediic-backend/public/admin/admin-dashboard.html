@@ -30,6 +30,7 @@
       <li><a href="#" class="nav-link active" data-section="dashboard">Dashboard</a></li>
       <li><a href="#" class="nav-link" data-section="incubation">Incubation Forms</a></li>
       <li><a href="#" class="nav-link" data-section="pre-incubation">Pre-Incubation Forms</a></li>
+       <li><a href="#" class="nav-link" data-section="ai-lab">AI Lab Registrations</a></li>
       <li><a href="#" class="nav-link" data-section="contact">Contact Messages</a></li>
       <li class="superadmin-only"><a href="#" class="nav-link" data-section="admin-management">Manage Admins</a></li>
       <li><a href="#" class="nav-link" id="logoutBtn">Logout</a></li>
@@ -44,6 +45,7 @@
       <div class="row g-3 mt-2">
         <div class="col-md-3"><div class="card card-summary bg-primary text-white">Incubation: <span id="incubation-count">0</span></div></div>
         <div class="col-md-3"><div class="card card-summary bg-success text-white">Pre-Incubation: <span id="preincubation-count">0</span></div></div>
+        <div class="col-md-3"><div class="card card-summary bg-info text-white"> AI Lab: <span id="ailab-count">0</span></div></div>
         <div class="col-md-3"><div class="card card-summary bg-warning text-dark">Messages: <span id="contact-count">0</span></div></div>
       </div>
     </div>
@@ -54,8 +56,8 @@
       <table class="table table-striped mt-2">
         <thead>
           <tr>
-            <th>Name</th><th>Email</th><th>Contact</th><th>Company</th><th>Type</th><th>Date</th>
-          </tr>
+            <th>Email</th><th>Contact</th><th>Name</th><th>Company Address</th><th>Applicant/Company's Registered Address</th><th>Vision & Mission</th>
+           <th>Core Products/Services</th> <th>What Supports are you looking for?</th> <th>Type of Incubation *</th> <th>Upload Payment Screenshot *</th> <th>UTR No *</th><th>Company Logo</th></tr>
         </thead>
         <tbody id="incubation-tbody"></tbody>
       </table>
@@ -66,12 +68,25 @@
       <table class="table table-striped mt-2">
         <thead>
           <tr>
-            <th>Name</th><th>Email</th><th>Contact</th><th>Company</th><th>Idea</th><th>Date</th>
+            <th>Email</th><th>Contact</th><th>Name</th><th>Company Address</th><th>type</th><th>Your Business Idea</th> <th></th><th>Date</th>
           </tr>
         </thead>
         <tbody id="preincubation-tbody"></tbody>
       </table>
     </div>
+
+    <div id="ai-lab-section" class="hidden">
+  <h2>AI Lab Registrations</h2>
+  <table class="table table-striped mt-2">
+    <thead>
+      <tr>
+        <th>Name</th><th>Organization / Startup</th><th>Email</th><th>Mobile No.</th><th>Area of Interest</th><th>Message/Idea</th><th></th><th>Date</th>
+      </tr>
+    </thead>
+    <tbody id="ailab-tbody"></tbody>
+  </table>
+</div>
+
 
     <div id="contact-section" class="hidden">
       <h2>Contact Messages</h2>
@@ -91,58 +106,83 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Section toggle
-    const sections = ["dashboard", "incubation", "pre-incubation", "contact", "admin-management"];
-    document.querySelectorAll('#sidebar .nav-link').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const section = link.dataset.section;
-        if (!section) return;
-        sections.forEach(s => document.getElementById(s + '-section').classList.add('hidden'));
-        document.getElementById(section + '-section').classList.remove('hidden');
-      });
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // ✅ Ensure user is logged in
+  const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+
+  if (!token) {
+    alert("Session expired. Please log in again.");
+    window.location.href = "admin-login.html";
+  }
+
+  // ✅ Helper function: fetch with Authorization header
+  async function fetchWithAuth(url) {
+    const res = await fetch(url, {
+      headers: { "Authorization": `Bearer ${token}` },
     });
-
-    // Fetch Dashboard Counts
-    async function fetchDashboardSummary() {
-      const res = await fetch('/api/admin/stats');
-      const data = await res.json();
-      document.getElementById('incubation-count').textContent = data.incubation;
-      document.getElementById('preincubation-count').textContent = data.preIncubation;
-      document.getElementById('contact-count').textContent = data.contact;
+    if (!res.ok) {
+      console.error("Error fetching:", url, res.status);
     }
+    return res.json();
+  }
 
-    // Fetch Table Data
-    async function fetchTableData(endpoint, tbodyId) {
-      const res = await fetch(endpoint);
-      const data = await res.json();
-      const tbody = document.getElementById(tbodyId);
-      tbody.innerHTML = '';
-      data.forEach(item => {
-        const tr = document.createElement('tr');
-        for (let key in item) {
-          if (key === '_id' || key === '__v') continue;
-          const td = document.createElement('td');
-          td.textContent = item[key];
-          tr.appendChild(td);
-        }
-        tbody.appendChild(tr);
-      });
+  // ✅ Sidebar toggle between sections
+  const sections = ["dashboard", "incubation", "pre-incubation", "contact","ai-lab", "admin-management"];
+  document.querySelectorAll('#sidebar .nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const section = link.dataset.section;
+      if (!section) return;
+      sections.forEach(s => document.getElementById(s + '-section').classList.add('hidden'));
+      document.getElementById(section + '-section').classList.remove('hidden');
+    });
+  });
+
+  // ✅ Fetch Dashboard Summary
+  async function fetchDashboardSummary() {
+    const data = await fetchWithAuth('/api/admin/stats');
+    if (data) {
+      document.getElementById('incubation-count').textContent = data.incubation ?? 0;
+      document.getElementById('preincubation-count').textContent = data.preIncubation ?? 0;
+      document.getElementById('contact-count').textContent = data.contact ?? 0;
+     document.getElementById("ailab-count").textContent = data.aiLabCount ?? 0;
     }
+  }
 
-    // Initial fetch
-    fetchDashboardSummary();
-    fetchTableData('/api/admin/recent-incubation', 'incubation-tbody');
-    fetchTableData('/api/admin/pre-incubation', 'preincubation-tbody');
-    fetchTableData('/api/admin/contact', 'contact-tbody');
+  // ✅ Fetch Table Data
+  async function fetchTableData(endpoint, tbodyId) {
+    const data = await fetchWithAuth(endpoint);
+    const tbody = document.getElementById(tbodyId);
+    tbody.innerHTML = '';
+    if (!data || !Array.isArray(data)) return;
 
-    // Role-based UI
-    const userRole = 'superadmin'; // Example: fetch from JWT or backend
-    if (userRole !== 'superadmin') {
-      document.querySelectorAll('.superadmin-only').forEach(el => el.remove());
-    }
-  </script>
+    data.forEach(item => {
+      const tr = document.createElement('tr');
+      for (let key in item) {
+        if (key === '_id' || key === '__v') continue;
+        const td = document.createElement('td');
+        td.textContent = item[key];
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    });
+  }
+
+  // ✅ Initialize dashboard
+  fetchDashboardSummary();
+  fetchTableData('/api/admin/recent-incubation', 'incubation-tbody');
+  fetchTableData('/api/admin/pre-incubation', 'preincubation-tbody');
+  fetchTableData('/api/admin/contact', 'contact-tbody');
+  fetchTableData("/api/admin/ai-lab", "ailab-tbody");
+
+
+  // ✅ Role-based UI: hide Superadmin features for normal admins
+  if (role !== 'superadmin') {
+    document.querySelectorAll('.superadmin-only').forEach(el => el.remove());
+  }
+</script>
+
 </body>
 </html>

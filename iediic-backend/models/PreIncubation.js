@@ -14,4 +14,4 @@ const preIncubationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("PreIncubation", preIncubationSchema);
+module.exports = mongoose.model("PreIncubation", preIncubationSchema,  "preincubations");
