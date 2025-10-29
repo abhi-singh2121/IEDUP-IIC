@@ -170,7 +170,7 @@ form.addEventListener("submit", async function(e) {
   const formData = new FormData(this); // includes files automatically
 
   try {
-    const res = await fetch("http://localhost:3000/api/form/incubation", {
+    const res = await fetch("https://iedup-iic.onrender.com/api/form/incubation", {
       method: "POST",
       body: formData // do NOT set Content-Type, browser handles it
     });

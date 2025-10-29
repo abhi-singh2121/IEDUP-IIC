@@ -372,7 +372,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
   const data = Object.fromEntries(formData.entries());
 
   try {
-    const res = await fetch("http://localhost:3000/api/form/contact", {
+    const res = await fetch("https://iedup-iic.onrender.com/api/form/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
