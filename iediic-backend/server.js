@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 // const authRoutes = require("./routes/auth");
 const adminAuthRoutes = require("./routes/adminAuth");
 const adminDashboardRoutes = require("./routes/adminDashboard");
@@ -9,10 +10,10 @@ const adminDashboardRoutes = require("./routes/adminDashboard");
 const app = express();
 
 // Middleware
-app.use(cors({ origin: "https://your-frontend.onrender.com", methods: ["GET","POST"], credentials: true }));
+app.use(cors({ origin: "*", methods: ["GET","POST"], credentials: true }));
 app.use(express.json());
 app.use(express.static("public"));
-// app.use("/api/auth", authRoutes);
+//app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminAuthRoutes); 
 app.use("/api/admin/dashboard", adminDashboardRoutes);
 
