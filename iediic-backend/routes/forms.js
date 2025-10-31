@@ -9,8 +9,7 @@ const { submitIncubationForm, submitPreIncubationForm, submitAiLabForm, submitCo
 const upload = multer({ dest: "uploads/" });
 
 // Routes
-router.post(
-  "/incubation",
+router.post( "/incubation",
   upload.fields([
     { name: "paymentScreenshot", maxCount: 1 },
     { name: "companyLogo", maxCount: 1 }

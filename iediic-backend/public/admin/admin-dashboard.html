@@ -108,6 +108,8 @@
 
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+  const BASE_URL = "https://iedup-iic.onrender.com"; 
+
   // ✅ Ensure user is logged in
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
@@ -142,7 +144,7 @@
 
   // ✅ Fetch Dashboard Summary
   async function fetchDashboardSummary() {
-    const data = await fetchWithAuth('/api/admin/stats');
+    const data = await fetchWithAuth('https://iedup-iic.onrender.com/api/admin/stats');
     if (data) {
       document.getElementById('incubation-count').textContent = data.incubation ?? 0;
       document.getElementById('preincubation-count').textContent = data.preIncubation ?? 0;
@@ -172,10 +174,10 @@
 
   // ✅ Initialize dashboard
   fetchDashboardSummary();
-  fetchTableData('/api/admin/recent-incubation', 'incubation-tbody');
-  fetchTableData('/api/admin/pre-incubation', 'preincubation-tbody');
-  fetchTableData('/api/admin/contact', 'contact-tbody');
-  fetchTableData("/api/admin/ai-lab", "ailab-tbody");
+  fetchTableData('https://iedup-iic.onrender.com/api/admin/recent-incubation', 'incubation-tbody');
+  fetchTableData('https://iedup-iic.onrender.com/api/admin/pre-incubation', 'preincubation-tbody');
+  fetchTableData('https://iedup-iic.onrender.com/api/admin/contact', 'contact-tbody');
+  fetchTableData("https://iedup-iic.onrender.com/api/admin/ai-lab", "ailab-tbody");
 
 
   // ✅ Role-based UI: hide Superadmin features for normal admins
