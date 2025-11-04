@@ -168,19 +168,39 @@ const form = document.getElementById("incubationForm");
 
 form.addEventListener("submit", async function(e) {
   e.preventDefault();
-  const formData = new FormData(this); // includes files automatically
+
+  // ✅ Immediately show loader
+  const loadingAlert = document.createElement("div");
+  loadingAlert.className = "alert alert-info text-center position-fixed top-50 start-50 translate-middle shadow";
+  loadingAlert.style.zIndex = "1055";
+  loadingAlert.innerHTML = "<strong>⏳ Submitting...</strong><br>Please wait while files are uploaded.";
+  document.body.appendChild(loadingAlert);
+
+  const formData = new FormData(this);
 
   try {
     const res = await fetch("https://iedup-iic.onrender.com/api/form/incubation", {
       method: "POST",
-      body: formData // do NOT set Content-Type, browser handles it
+      body: formData
     });
+
     const result = await res.json();
-    alert(result.message);
-    this.reset();
-  } catch(err) {
-    console.error(err);
-    alert("❌ Submission failed!");
+
+    // ✅ Remove loader
+    loadingAlert.remove();
+
+    // ✅ Success popup
+    if (res.ok && result.success !== false) {
+      alert("✅ " + (result.message || "Form submitted successfully!"));
+      this.reset();
+      document.getElementById("paymentDetails").style.display = "none";
+    } else {
+      alert("⚠️ " + (result.message || "Something went wrong!"));
+    }
+  } catch (err) {
+    console.error("Submission error:", err);
+    loadingAlert.remove();
+    alert("❌ Submission failed! Please try again.");
   }
 });
 
@@ -201,8 +221,8 @@ incubationSelect.addEventListener("change", function() {
     paymentDetails.style.display = "none";
   }
 });
-
 </script>
+
 
 
 </body>
