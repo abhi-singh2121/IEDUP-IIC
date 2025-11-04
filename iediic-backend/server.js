@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.static("public"));
 //app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminAuthRoutes); 
-app.use("/api/admin/dashboard", adminDashboardRoutes);
+app.use("/api/admin/", adminDashboardRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
