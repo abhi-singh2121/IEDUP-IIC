@@ -33,9 +33,9 @@
        <li><a href="#" class="nav-link" data-section="ai-lab">AI Lab Registrations</a></li>
       <li><a href="#" class="nav-link" data-section="contact">Contact Messages</a></li>
       <li class="superadmin-only"><a href="#" class="nav-link" data-section="admin-management">Manage Admins</a></li>
-     <button id="logoutBtn" class="btn btn-danger btn-sm">Logout</button>
-
+    
     </ul>
+     <button id="logoutBtn" class="btn btn-danger btn-sm">Logout</button>
   </nav>
 
   <!-- Main Content -->
@@ -170,9 +170,7 @@
         tr.appendChild(td);
       }
       tbody.appendChild(tr);
-    });
-  }
-// 🧱 Action buttons (Edit/Delete)
+      // 🧱 Action buttons (Edit/Delete)
     const actionTd = document.createElement('td');
     actionTd.innerHTML = `
       <button class="btn btn-sm btn-primary edit-btn" data-id="${item._id}" data-type="${type}">Edit</button>
@@ -181,6 +179,9 @@
     tr.appendChild(actionTd);
     tbody.appendChild(tr);
   
+    });
+  }
+
     // ✅ Initialize dashboard
   fetchDashboardSummary();
   fetchTableData('https://iedup-iic.onrender.com/api/admin/recent-incubation', 'incubation-tbody', 'incubation');
@@ -203,7 +204,7 @@ document.addEventListener("click", async (e) => {
     const id = e.target.dataset.id;
     const type = e.target.dataset.type;
     if (confirm("Are you sure you want to delete this entry?")) {
-      const res = await fetch(`${BASE_URL}/api/admin/dashboard/delete/${type}/${id}`, {
+      const res = await fetch(`${BASE_URL}/api/admin/delete/${type}/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
@@ -219,7 +220,7 @@ document.addEventListener("click", async (e) => {
     const type = e.target.dataset.type;
     const newName = prompt("Enter new applicant name:");
     if (newName) {
-      const res = await fetch(`${BASE_URL}/api/admin/dashboard/update/${type}/${id}`, {
+      const res = await fetch(`${BASE_URL}/api/admin/update/${type}/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
