@@ -193,11 +193,7 @@
   if (role !== 'superadmin') {
     document.querySelectorAll('.superadmin-only').forEach(el => el.remove());
   }
-  //logout functionality
-  document.getElementById("logoutBtn").addEventListener("click", () => {
-  localStorage.removeItem("token");
-  window.location.href = "admin-login.html";
-});
+  
 
 document.addEventListener("click", async (e) => {
   const BASE_URL = "https://iedup-iic.onrender.com";
@@ -238,6 +234,13 @@ document.addEventListener("click", async (e) => {
   }
 });
 
+// ✅ Logout functionality
+document.getElementById("logoutBtn")?.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("role");
+  alert("Logged out successfully!");
+  window.location.href = "admin-login.html";
+});
 
 </script>
 
